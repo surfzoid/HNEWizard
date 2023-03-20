@@ -12,6 +12,10 @@ Wizard::Wizard(QWidget *parent)
     ui->setupUi(this);
     ui->PathED->setText(Lastpath);
     ui->SavePathEd->setText(QStandardPaths::writableLocation(QStandardPaths::HomeLocation));
+    Wizard::on_BtnLoad_released();
+    for (int i =1;i<60 ;i++ ) {
+        ui->CmbxCronFreq->addItem(QString::number(i));
+    }
 }
 
 Wizard::~Wizard()
@@ -175,7 +179,13 @@ void Wizard::on_BtnLoad_released()
         {
             QStringList IpPort = GetParam(line).split(":");
             ui->IpEd->setText( IpPort.at(0));
-            ui->PortHttpEd->setText( IpPort.at(1));
+            if (IpPort.length()>1) {
+                ui->PortHttpEd->setText( IpPort.at(1));
+            }
+            else {
+                ui->PortHttpEd->setText( "80");
+            }
+
         }
 
         if (line.startsWith("username"))
@@ -215,4 +225,42 @@ QString Wizard::GetParam(QString ToSplit)
     QStringList RetL = ToSplit.split(" = ");
     QString Ret = RetL.at(1);
     return Ret.remove("'").remove("\"");
+}
+
+void Wizard::on_PathED_textEdited(const QString &arg1)
+{
+    Lastpath = arg1;
+}
+
+void Wizard::on_BtnCronCreate_released()
+{
+    QString SystemdServiceTemplatecache = SystemdServiceTemplate;
+    QString SystemdTimerTemplatecache = SystemdTimerTemplate;
+
+    SystemdServiceTemplate = SystemdServiceTemplate.replace("CAM",ui->CamNameED->text()).replace("HikNetExtractor.py",ui->PathED->text()  + "/" + ui->CamNameED->text() + "/"+ "HikNetExtractor.py");
+    SystemdTimerTemplate = SystemdTimerTemplate.replace("CAM",ui->CamNameED->text()).replace("00MM",ui->CmbxCronFreq->currentText());
+
+    QFile SystemdService(SystemdPath + ui->CamNameED->text() + ".service");
+    QFile SystemdTimer(SystemdPath + ui->CamNameED->text() + ".timer");
+
+    if(!SystemdService.open(QIODevice::WriteOnly | QIODevice::Truncate))
+        exit(1);
+    if(!SystemdTimer.open(QIODevice::WriteOnly | QIODevice::Truncate))
+        exit(1);
+
+    SystemdService.write(SystemdServiceTemplate.toUtf8());
+    SystemdTimer.write(SystemdTimerTemplate.toUtf8());
+
+    SystemdService.flush();
+    SystemdTimer.flush();
+
+    SystemdService.close();
+    SystemdTimer.close();
+
+    SystemdServiceTemplate = SystemdServiceTemplatecache;
+    SystemdTimerTemplate = SystemdTimerTemplatecache;
+
+    QProcess process;
+    process.start("systemctl", QStringList() << "--user" << "enable" << ui->CamNameED->text() + ".timer" << "--now");
+
 }

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 #include <QStandardPaths>
+#include <QProcess>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Wizard; }
@@ -28,6 +29,10 @@ private slots:
 
     void on_BtnLoad_released();
 
+    void on_PathED_textEdited(const QString &arg1);
+
+    void on_BtnCronCreate_released();
+
 private:
     Ui::Wizard *ui;
     QString Lastpath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
@@ -39,5 +44,28 @@ private:
                     password = 2,
                     Channel = 3
                    };
+
+    QString SystemdServiceTemplate = "[Unit]\n"
+"Description=Run HikNetExtractor to backup videos of CAM device.\n"
+"\n"
+"[Service]\n"
+"Type=simple\n"
+"ExecStart=HikNetExtractor.py\n"
+"\n"
+"[Install]\n"
+"WantedBy=multi-user.target";
+
+    QString SystemdTimerTemplate = "[Unit]\n"
+"Description=Run HikNetExtractor to backup videos of CAM device.\n"
+"\n"
+"[Timer]\n"
+"OnUnitActiveSec=00MMmin\n"
+"AccuracySec=1us\n"
+"\n"
+"[Install]\n"
+"WantedBy=multi-user.target\n";
+
+    QString SystemdPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.config/systemd/user/";
+
 };
 #endif // WIZARD_H
