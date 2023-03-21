@@ -19,7 +19,7 @@ FORMS += \
     wizard.ui
 
 TRANSLATIONS += \
-    HNEWizard_en_GB.ts
+    HNEWizard_fr_FR.ts
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

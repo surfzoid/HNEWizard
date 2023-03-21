@@ -305,7 +305,7 @@ void Wizard::on_BtnDelTimer_released()
 void Wizard::on_BtnDuplicate_released()
 {
     bool ok;
-    QString NewDevice = QInputDialog::getText(this, tr("New Device"), ui->CamNameED->text(), QLineEdit::Normal,ui->CamNameED->text(), &ok);
+    QString NewDevice = QInputDialog::getText(this, tr("New Device"), tr("Enter a new devce name: "), QLineEdit::Normal,ui->CamNameED->text(), &ok);
 
          if (ok && !NewDevice.isEmpty())
          {
