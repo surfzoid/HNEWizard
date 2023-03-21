@@ -17,10 +17,11 @@ jobs:
       - name: Need qmake and QT
         run: | 
             sudo apt install -y qt5-qmake qtbase5-dev qtbase5-dev-tools
-            export PREFIX = /usr/share
 
       - name: qmake
         run: qmake
+        env:
+          PREFIX: /usr/share
 
       - name: make
         run: make
