@@ -43,7 +43,7 @@ A wizard to configure and install HikNetExtractor https://github.com/surfzoid/Hi
 %make_build
  
 %install
-%make_install INSTALL_ROOT=%{buildroot}
+%make_install INSTALL_ROOT=%{buildroot}%{_datadir}
  
 #%find_lang %{name} --with-qt --all-name
 
