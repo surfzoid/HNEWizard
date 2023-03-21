@@ -300,6 +300,8 @@ void Wizard::on_BtnDelTimer_released()
         return;
     QFile::remove(SystemdPath + ui->CamNameED->text() + ".service");
     QFile::remove(SystemdPath + ui->CamNameED->text() + ".timer");
+    QFile::remove(SystemdPath + "multi-user.target.wants/" + ui->CamNameED->text() + ".service");
+    QFile::remove(SystemdPath + "multi-user.target.wants/" + ui->CamNameED->text() + ".timer");
 }
 
 void Wizard::on_BtnDuplicate_released()
