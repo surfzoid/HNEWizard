@@ -18,6 +18,13 @@ Wizard::Wizard(QWidget *parent)
     for (int i =1;i<60 ;i++ ) {
         ui->CmbxCronFreq->addItem(QString::number(i));
     }
+
+    process = new QProcess(this);
+    //connect(process, &QProcess::finished, this, &Wizard::processFinished);
+    connect(process, &QProcess::stateChanged, this, &Wizard::addlabelstatus);
+    connect(process, &QProcess::readyReadStandardError, this, &Wizard::processreadyReadStandardError);
+    connect(process, &QProcess::readyReadStandardOutput, this, &Wizard::processreadyReadStandardOutput);
+
 }
 
 Wizard::~Wizard()
@@ -288,20 +295,15 @@ void Wizard::on_BtnCronCreate_released()
     SystemdServiceTemplate = SystemdServiceTemplatecache;
     SystemdTimerTemplate = SystemdTimerTemplatecache;
 
-    QProcess process;
-    process.start("systemctl", QStringList() << "--user");
+    processIsFinished = false;
+    process->start("systemctl", QStringList() << "--user" << "enable" << ui->CamNameED->text().toUtf8() + ".timer" << "--now");
 
-    if (!process.waitForStarted())
-        return ;
+    while (!process->waitForFinished(10000)) {
 
-    process.write("enable " + ui->CamNameED->text().toUtf8() + ".timer --now");
-    process.write("enable " + ui->CamNameED->text().toUtf8() + ".service --now");
-    process.closeWriteChannel();
+    }
 
-    if (!process.waitForFinished())
-        return ;
+    process->start("systemctl", QStringList() << "--user" << "enable" << ui->CamNameED->text().toUtf8() + ".service" << "--now");
 
-    QByteArray result = process.readAll();
 }
 
 void Wizard::on_BtnDelTimer_released()
@@ -313,6 +315,7 @@ void Wizard::on_BtnDelTimer_released()
     QFile::remove(SystemdPath + ui->CamNameED->text() + ".timer");
     QFile::remove(SystemdPath + "multi-user.target.wants/" + ui->CamNameED->text() + ".service");
     QFile::remove(SystemdPath + "multi-user.target.wants/" + ui->CamNameED->text() + ".timer");
+    ui->TxtDebug->append("Timer deleted");
 }
 
 void Wizard::on_BtnDuplicate_released()
@@ -320,10 +323,37 @@ void Wizard::on_BtnDuplicate_released()
     bool ok;
     QString NewDevice = QInputDialog::getText(this, tr("New Device"), tr("Enter a new devce name: "), QLineEdit::Normal,ui->CamNameED->text(), &ok);
 
-         if (ok && !NewDevice.isEmpty())
-         {
-             ui->CamNameED->setText(NewDevice);
-             Wizard::on_BtnAdd_released();
-             Wizard::on_BtnCronCreate_released();
-         }
+    if (ok && !NewDevice.isEmpty())
+    {
+        ui->CamNameED->setText(NewDevice);
+        Wizard::on_BtnAdd_released();
+        Wizard::on_BtnCronCreate_released();
+    }
+}
+
+void Wizard::processFinished(int exitCode, QProcess::ExitStatus exitStatus)
+{
+    ui->TxtDebug->append(QString::number(exitCode));
+    ui->TxtDebug->append(QString::number(exitStatus));
+    processIsFinished = true;
+}
+
+void Wizard::addlabelstatus(QProcess::ProcessState newState)
+{
+    /*switch(newState) {
+        <...>
+    };*/
+    if (newState == 0)
+    ui->TxtDebug->append(QString::number(newState));
+}
+
+
+void Wizard::processreadyReadStandardError()
+{
+    ui->TxtDebug->append(process->readAllStandardError());
+}
+
+void Wizard::processreadyReadStandardOutput()
+{
+    ui->TxtDebug->append(process->readAllStandardOutput());
 }

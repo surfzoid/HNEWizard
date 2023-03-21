@@ -37,6 +37,12 @@ private slots:
 
     void on_BtnDuplicate_released();
 
+public slots:
+    void processFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void addlabelstatus(QProcess::ProcessState newState);
+    void processreadyReadStandardError();
+    void processreadyReadStandardOutput();
+
 private:
     Ui::Wizard *ui;
     QString Lastpath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
@@ -44,10 +50,10 @@ private:
     QString GetParam(QString ToSplit);
 
     enum ConfParam{url = 0,
-                    username = 1,
-                    password = 2,
-                    Channel = 3
-                   };
+                   username = 1,
+                   password = 2,
+                   Channel = 3
+                  };
 
     QString SystemdServiceTemplate = "[Unit]\n"
 "Description=Run HikNetExtractor to backup videos of CAM device.\n"
@@ -70,6 +76,9 @@ private:
 "WantedBy=multi-user.target\n";
 
     QString SystemdPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.config/systemd/user/";
+
+    QProcess *process;
+    bool processIsFinished = false;
 
 };
 #endif // WIZARD_H
