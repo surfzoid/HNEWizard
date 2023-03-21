@@ -63,8 +63,8 @@ cat <<EOT >%{buildroot}%{_datadir}/applications/%{name}.desktop
 [Desktop Entry]
 Version=1.0
 Name=HikNetExtractor
-GenericName=%{Summary}
-Comment=%{Summary}
+GenericName=%{summary}
+Comment=%{summary}
 Exec=HikNetExtractor %U
 TryExec=%{_bindir}/HikNetExtractor
 Icon=QtVsPlayer
