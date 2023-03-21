@@ -43,14 +43,18 @@ A wizard to configure and install HikNetExtractor https://github.com/surfzoid/Hi
 %make_build
  
 %install
-%make_install INSTALL_ROOT=%{buildroot}%{_datadir}
+%make_install INSTALL_ROOT=%{buildroot}
+
 mkdir -p %{buildroot}%{_datadir}/HikNetExtractor/template/
-wget https://github.com/surfzoid/HikNetExtractor/archive/refs/heads/main.zip -o HikNetExtractor-main.zip
-unzip -o ./HikNetExtractor-main.zip
+
+wget https://github.com/surfzoid/HikNetExtractor/archive/refs/heads/main.zip
+unzip -o ./main.zip
 cd ./HikNetExtractor-main/
 cp -fv ./*.py %{buildroot}%{_datadir}/HikNetExtractor/template/
 cp -fv ./LICENSE %{buildroot}%{_datadir}/HikNetExtractor/template/
 cp -fv ./README.md %{buildroot}%{_datadir}/HikNetExtractor/template/
+
+mkdir -p %{buildroot}%{_datadir}/applications/
 
 #Desktop file
 cat <<EOT >%{buildroot}%{_datadir}/applications/HNEWizard.desktop
@@ -89,8 +93,7 @@ chmod -R ug+rw %{_srcrpmdir}
 %endif
 %{_bindir}/HNEWizard
 %{_datadir}/applications/HNEWizard.desktop
-%{_datadir}/icons/QtVsPlayer.png
-%{_datadir}/HNEWizard/
+%{_datadir}/HikNetExtractor/
 
 %changelog
 * Mon Feb 06 2023 surfzoid@gmail.com
