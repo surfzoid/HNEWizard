@@ -56,14 +56,14 @@
    <widget class="QPushButton" name="BtnAdd">
     <property name="geometry">
      <rect>
-      <x>69</x>
-      <y>500</y>
+      <x>40</x>
+      <y>510</y>
       <width>121</width>
       <height>27</height>
      </rect>
     </property>
     <property name="toolTip">
-     <string>Save and lose</string>
+     <string/>
     </property>
     <property name="text">
      <string>Add/Modif</string>
@@ -72,8 +72,8 @@
    <widget class="QPushButton" name="BtnCancel">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>500</y>
+      <x>170</x>
+      <y>510</y>
       <width>100</width>
       <height>27</height>
      </rect>
@@ -88,10 +88,10 @@
    <widget class="QPushButton" name="BtnLoad">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>490</y>
-      <width>139</width>
-      <height>40</height>
+      <x>280</x>
+      <y>509</y>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -286,7 +286,7 @@
      <rect>
       <x>590</x>
       <y>150</y>
-      <width>271</width>
+      <width>315</width>
       <height>156</height>
      </rect>
     </property>
@@ -315,11 +315,31 @@
      <item row="2" column="0">
       <widget class="QPushButton" name="BtnCronCreate">
        <property name="text">
-        <string>Create</string>
+        <string>Create/update</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="BtnDelTimer">
+       <property name="text">
+        <string>Remove</string>
        </property>
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="BtnDuplicate">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>510</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Duplicate</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

@@ -4,6 +4,7 @@
 #include <QDir>
 #include <QFileDialog>
 #include <QDebug>
+#include <QMessageBox>
 
 Wizard::Wizard(QWidget *parent)
     : QMainWindow(parent)
@@ -288,5 +289,19 @@ void Wizard::on_BtnCronCreate_released()
 
     QProcess process;
     process.start("systemctl", QStringList() << "--user" << "enable" << ui->CamNameED->text() + ".timer" << "--now");
+
+}
+
+void Wizard::on_BtnDelTimer_released()
+{
+    int ret = QMessageBox::warning(this,tr("Are you sure? "),"Permanently delete timer for this device",QMessageBox::Ok | QMessageBox::Cancel);
+    if (ret == QMessageBox::Cancel)
+        return;
+    QFile::remove(SystemdPath + ui->CamNameED->text() + ".service");
+    QFile::remove(SystemdPath + ui->CamNameED->text() + ".timer");
+}
+
+void Wizard::on_BtnDuplicate_released()
+{
 
 }

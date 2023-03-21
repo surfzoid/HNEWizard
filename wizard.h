@@ -33,6 +33,10 @@ private slots:
 
     void on_BtnCronCreate_released();
 
+    void on_BtnDelTimer_released();
+
+    void on_BtnDuplicate_released();
+
 private:
     Ui::Wizard *ui;
     QString Lastpath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
