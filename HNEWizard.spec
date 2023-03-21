@@ -15,6 +15,7 @@ Source0:        https://github.com/surfzoid/HNEWizard/archive/%{version}/HNEWiza
 # List of additional build dependencies
 %if 0%{?mageia}
 BuildRequires:  qtbase5-common-devel
+BuildRequires:  lib64qt5widgets-devel
 %else
 %if 0%{?suse_version}
 BuildRequires:  libqt5-qtbase-devel
