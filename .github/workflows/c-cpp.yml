@@ -36,14 +36,14 @@ jobs:
 
       - name: Archive of bin's
         run: | 
-            tar -czvf HNEWizard-${{ steps.version.outputs.version }}.tar.gz /usr/bin/HNEWizard
+            tar -czvf HNEWizard-bin-${{ steps.version.outputs.version }}.tar.gz /usr/bin/HNEWizard
             ls -lah
 
       - name: Create Github Release
         uses: ncipollo/release-action@v1.11.1
         id: create_release
         with:
-          artifacts: "HNEWizard-${{ steps.version.outputs.version }}*"
+          artifacts: "HNEWizard-bin-${{ steps.version.outputs.version }}*"
           replacesArtifacts: true
           token: ${{ github.TOKEN }}
           allowUpdates: true
