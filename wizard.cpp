@@ -218,6 +218,8 @@ void Wizard::on_BtnLoad_released()
     }
 
     ConfFs.close();
+
+    //add the load of timer value here
 }
 
 QString Wizard::GetParam(QString ToSplit)
