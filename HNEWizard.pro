@@ -31,7 +31,7 @@ TRANSLATIONS += \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /usr/bin
+else: unix:!android: target.path = ../bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \

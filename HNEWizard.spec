@@ -11,7 +11,7 @@ Release:        1
 License:        GPLv3
 Group:          Video/Players
 URL:            https://github.com/surfzoid/HNEWizard
-Source0:        https://github.com/surfzoid/HNEWizard/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/surfzoid/HNEWizard/archive/%{version}/HNEWizard-%{version}.tar.gz
 # List of additional build dependencies
 %if 0%{?mageia}
 BuildRequires:  qtbase5-common-devel
@@ -31,7 +31,7 @@ Requires: qtbase5-common
 A wizard to configure and install HikNetExtractor https://github.com/surfzoid/HikNetExtractor
  
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n HNEWizard-%{version}
  
 %build
 %if 0%{?suse_version}
@@ -45,17 +45,18 @@ A wizard to configure and install HikNetExtractor https://github.com/surfzoid/Hi
 %install
 %make_install INSTALL_ROOT=%{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_datadir}/HikNetExtractor/template/
-wget https://github.com/surfzoid/HikNetExtractor/archive/refs/heads/main.zip
+wget https://github.com/surfzoid/HikNetExtractor/archive/refs/heads/main.zip -o HikNetExtractor-main.zip
 unzip -o ./HikNetExtractor-main.zip
 cd ./HikNetExtractor-main/
 cp -fv ./*.py %{buildroot}%{_datadir}/HikNetExtractor/template/
 cp -fv ./LICENSE %{buildroot}%{_datadir}/HikNetExtractor/template/
 cp -fv ./README.md %{buildroot}%{_datadir}/HikNetExtractor/template/
+
 #Desktop file
 cat <<EOT >%{buildroot}%{_datadir}/applications/HNEWizard.desktop
 [Desktop Entry]
 Version=1.0
-Name=%{Name}
+Name=HNEWizard
 GenericName=%{Summary}
 Comment=%{Summary}
 Exec=HNEWizard %U
@@ -68,8 +69,8 @@ Keywords=Player;Video;HikVision;Motion;
 X-Desktop-File-Install-Version=0.26
 Path=/usr/bin
 Comment[fr_FR]=Assistant de configuration pour HikNetExtractor
-Name[fr_FR]=%{Name}
-GenericName[fr_FR]=%{Name}
+Name[fr_FR]=HNEWizard
+GenericName[fr_FR]=HNEWizard
 EOT
 
 %post
