@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QDebug>
 #include <QMessageBox>
+#include <QInputDialog>
 
 Wizard::Wizard(QWidget *parent)
     : QMainWindow(parent)
@@ -303,5 +304,13 @@ void Wizard::on_BtnDelTimer_released()
 
 void Wizard::on_BtnDuplicate_released()
 {
+    bool ok;
+    QString NewDevice = QInputDialog::getText(this, tr("New Device"), ui->CamNameED->text(), QLineEdit::Normal,ui->CamNameED->text(), &ok);
 
+         if (ok && !NewDevice.isEmpty())
+         {
+             ui->CamNameED->setText(NewDevice);
+             Wizard::on_BtnAdd_released();
+             Wizard::on_BtnCronCreate_released();
+         }
 }
