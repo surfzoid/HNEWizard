@@ -91,7 +91,7 @@ chmod -R ug+rw %{_srcrpmdir}
 %files
 %license LICENSE
 %if 0%{?suse_version}
-%{_datadir}/doc/%{name}/README.md
+%{_datadir}/doc/README.md
 %else
 %doc README.md
 %endif
