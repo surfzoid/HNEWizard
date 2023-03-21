@@ -38,7 +38,7 @@ jobs:
         uses: ncipollo/release-action@v1.11.1
         id: create_release
         with:
-          artifacts: "HNEWizard-${{ steps.version.outputs.version }}*,HNEWizard${{ steps.version.outputs.version }}*,HNEWizard-debuginfo*"
+          #artifacts: "HNEWizard-${{ steps.version.outputs.version }}*,HNEWizard${{ steps.version.outputs.version }}*,HNEWizard-debuginfo*"
           replacesArtifacts: true
           token: ${{ github.TOKEN }}
           allowUpdates: true
