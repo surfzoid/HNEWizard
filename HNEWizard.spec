@@ -1,6 +1,6 @@
 Name:           HikNetExtractor
 Summary:        HikNetExtractor for Hikvision
-Version:        1.0.1
+Version:        1.0.2
 
 %if 0%{?mageia}
 Release:        %mkrel 1
@@ -45,7 +45,7 @@ A wizard to configure and install HikNetExtractor https://github.com/surfzoid/Hi
 %install
 %make_install INSTALL_ROOT=%{buildroot}%{_datadir}
  
-#%find_lang %{name} --with-qt --all-name
+%find_lang %{name} --with-qt --all-name
 
 mkdir -p %{buildroot}%{_datadir}/HikNetExtractor/template/
 
