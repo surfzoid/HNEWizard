@@ -33,3 +33,7 @@ TRANSLATIONS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /usr/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    images/QtVsPlayer.icns \
+    images/QtVsPlayer.png

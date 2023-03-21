@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Wizard for HikNetHextractor https://github.com/surfzoid/HikNetExtractor</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>images/QtVsPlayer.png</normaloff>images/QtVsPlayer.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
