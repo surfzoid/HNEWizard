@@ -220,6 +220,30 @@ void Wizard::on_BtnLoad_released()
     ConfFs.close();
 
     //add the load of timer value here
+    QFile SystemdTimer(SystemdPath + ui->CamNameED->text() + ".timer");
+    if (!SystemdTimer.exists())
+        return;
+
+    if(!SystemdTimer.open(QIODevice::ReadOnly))
+        exit(1);
+
+    QTextStream inTime(&SystemdTimer);
+
+    //Read file line by line until it reaches the end
+    while(!inTime.atEnd())
+    {
+        QString FindTime = inTime.readLine();
+
+        if (FindTime.startsWith("OnUnitActiveSec="))
+        {
+            FindTime = FindTime.remove("OnUnitActiveSec=").remove("min");
+
+            ui->CmbxCronFreq->setCurrentIndex(ui->CmbxCronFreq->findText(FindTime));
+            break;
+        }
+    }
+
+    SystemdTimer.close();
 }
 
 QString Wizard::GetParam(QString ToSplit)
