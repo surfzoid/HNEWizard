@@ -59,7 +59,7 @@ cp -fv ./README.md %{buildroot}%{_datadir}/HikNetExtractor/template/
 mkdir -p %{buildroot}%{_datadir}/applications/
 
 #Desktop file
-cat <<EOT >%{buildroot}%{_datadir}/applications/HNEWizard.desktop
+cat <<EOT >%{buildroot}%{_datadir}/applications/%{name}.desktop
 [Desktop Entry]
 Version=1.0
 Name=HNEWizard
@@ -94,8 +94,7 @@ chmod -R ug+rw %{_srcrpmdir}
 %{_datadir}/doc/HNEWizard/README.md
 %endif
 %{_bindir}/HNEWizard
-%{_datadir}/applications/HNEWizard.desktop
-%{_datadir}/HNEWizard
+%{_datadir}/applications/%{name}.desktop
 %{_datadir}/HikNetExtractor/
 
 %changelog
