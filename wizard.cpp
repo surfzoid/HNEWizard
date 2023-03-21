@@ -289,8 +289,19 @@ void Wizard::on_BtnCronCreate_released()
     SystemdTimerTemplate = SystemdTimerTemplatecache;
 
     QProcess process;
-    process.start("systemctl", QStringList() << "--user" << "enable" << ui->CamNameED->text() + ".timer" << "--now");
+    process.start("systemctl", QStringList() << "--user");
 
+    if (!process.waitForStarted())
+        return ;
+
+    process.write("enable " + ui->CamNameED->text().toUtf8() + ".timer --now");
+    process.write("enable " + ui->CamNameED->text().toUtf8() + ".service --now");
+    process.closeWriteChannel();
+
+    if (!process.waitForFinished())
+        return ;
+
+    QByteArray result = process.readAll();
 }
 
 void Wizard::on_BtnDelTimer_released()
