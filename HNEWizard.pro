@@ -7,7 +7,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++11
 OUTPUT += Console
 # Specifies name of the binary.
-TARGET = HNEWizard
+TARGET = HikNetExtractor
 
 # Denotes that project is an application.
 TEMPLATE = app
@@ -20,7 +20,7 @@ unix {
         #PREFIX = $$(HOME)/.local/share
         PREFIX = /usr/share
     }
-    translationfiles.path = $$(PREFIX)/HNEWizard/translations
+    translationfiles.path = $$(PREFIX)/HikNetExtractor/translations
     translationfiles.files += $$PWD/*.qm
     }
 
@@ -39,7 +39,7 @@ TRANSLATIONS += \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /usr/bin
+else: unix:!android: target.path = $$(PREFIX)/../bin
 !isEmpty(target.path): INSTALLS += target translationfiles
 
 DISTFILES += \

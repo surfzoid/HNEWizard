@@ -45,7 +45,7 @@ A wizard to configure and install HikNetExtractor https://github.com/surfzoid/Hi
 %install
 %make_install INSTALL_ROOT=%{buildroot}
  
-%find_lang %{name} --with-qt --all-name
+#%find_lang %{name} --with-qt --all-name
 
 mkdir -p %{buildroot}%{_datadir}/HikNetExtractor/template/
 
@@ -95,6 +95,7 @@ chmod -R ug+rw %{_srcrpmdir}
 %endif
 %{_bindir}/HNEWizard
 %{_datadir}/applications/HNEWizard.desktop
+%{_datadir}/HNEWizard
 %{_datadir}/HikNetExtractor/
 
 %changelog
