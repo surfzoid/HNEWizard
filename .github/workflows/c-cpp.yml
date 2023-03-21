@@ -13,11 +13,28 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - name: qmake
+        run: qmake
+      - name: make
+        run: make
+      - name: make check
+        run: make check
+
+      - name: make install
+        run: make install
+
+      - name: Version
+        run: echo "::set-output name=version::$(head -n 1 ./HNEWizard.pro| cut -d ' ' -f 3)"
+        id: version
+
+        - name: Create Github Release
+        uses: ncipollo/release-action@v1.11.1
+        id: create_release
+        with:
+          artifacts: "HNEWizard-${{ steps.version.outputs.version }}*,HNEWizard${{ steps.version.outputs.version }}*,HNEWizard-debuginfo*"
+          replacesArtifacts: true
+          token: ${{ github.TOKEN }}
+          allowUpdates: true
+          name: ${{ steps.version.outputs.version }}
+          tag: ${{ steps.version.outputs.version }}
+          body: "Automatic build from GitHub action"

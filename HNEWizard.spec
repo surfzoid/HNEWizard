@@ -1,5 +1,5 @@
-Name:           HNEWizard
-Summary:        HNEWizard for Hikvision
+Name:           HikNetExtractor
+Summary:        HikNetExtractor for Hikvision
 Version:        1.0.0
 
 %if 0%{?mageia}
@@ -28,7 +28,7 @@ BuildRequires:  unzip
 Requires: qtbase5-common
  
 %description
-A wizard to configure HikNetExtractor https://github.com/surfzoid/HikNetExtractor
+A wizard to configure and install HikNetExtractor https://github.com/surfzoid/HikNetExtractor
  
 %prep
 %autosetup -n %{name}-%{version}
