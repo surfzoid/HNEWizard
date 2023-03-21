@@ -34,11 +34,15 @@ jobs:
         run: echo "::set-output name=version::$(head -n 1 ./HNEWizard.pro| cut -d ' ' -f 3)"
         id: version
 
+      - name: Archive of bin's
+        run: | 
+            tar -czvf "HNEWizard-${{ steps.version.outputs.version }}*".tar.gz /usr/bin/HNEWizard
+
       - name: Create Github Release
         uses: ncipollo/release-action@v1.11.1
         id: create_release
         with:
-          #artifacts: "HNEWizard-${{ steps.version.outputs.version }}*,HNEWizard${{ steps.version.outputs.version }}*,HNEWizard-debuginfo*"
+          artifacts: "HNEWizard-${{ steps.version.outputs.version }}*"
           replacesArtifacts: true
           token: ${{ github.TOKEN }}
           allowUpdates: true
