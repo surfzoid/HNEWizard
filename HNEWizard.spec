@@ -90,7 +90,12 @@ chmod -R ug+rw %{_srcrpmdir}
  
 %files
 %license LICENSE
+%if 0%{?suse_version}
+%{_bindir}/doc/%{name}/README.md
+%else
 %doc README.md
+%endif
+
 %if 0%{?suse_version}
 %{_datadir}/doc/HNEWizard/README.md
 %endif
