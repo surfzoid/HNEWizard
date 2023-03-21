@@ -38,7 +38,7 @@ jobs:
 
       - name: Archive of bin's
         run: | 
-            tar -czvf HNEWizard-bin-${{ steps.version.outputs.version }}.tar.gz /usr/bin/HNEWizard
+            tar -czvf HNEWizard-bin-${{ steps.version.outputs.version }}.tar.gz /usr/bin/HikNetExtractor
             ls -lah
 
       - name: Create Github Release

@@ -62,11 +62,11 @@ mkdir -p %{buildroot}%{_datadir}/applications/
 cat <<EOT >%{buildroot}%{_datadir}/applications/%{name}.desktop
 [Desktop Entry]
 Version=1.0
-Name=HNEWizard
+Name=HikNetExtractor
 GenericName=%{Summary}
 Comment=%{Summary}
-Exec=HNEWizard %U
-TryExec=%{_bindir}/HNEWizard
+Exec=HikNetExtractor %U
+TryExec=%{_bindir}/HikNetExtractor
 Icon=QtVsPlayer
 Terminal=true
 Type=Application
@@ -75,8 +75,8 @@ Keywords=Player;Video;HikVision;Motion;
 X-Desktop-File-Install-Version=0.26
 Path=/usr/bin
 Comment[fr_FR]=Assistant de configuration pour HikNetExtractor
-Name[fr_FR]=HNEWizard
-GenericName[fr_FR]=HNEWizard
+Name[fr_FR]=HikNetExtractor wizaed
+GenericName[fr_FR]=HikNetExtractor wizard
 EOT
 
 %post
@@ -93,7 +93,7 @@ chmod -R ug+rw %{_srcrpmdir}
 %if 0%{?suse_version}
 %{_datadir}/doc/HNEWizard/README.md
 %endif
-%{_bindir}/HNEWizard
+%{_bindir}/HikNetExtractor
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/HikNetExtractor/
 
