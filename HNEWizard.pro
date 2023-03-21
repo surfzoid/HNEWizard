@@ -20,7 +20,7 @@ unix {
         #PREFIX = $$(HOME)/.local/share
         PREFIX = /usr/share
     }
-    translationfiles.path = $$(PREFIX)/QtVsPlayer/translations
+    translationfiles.path = $$(PREFIX)/HNEWizard/translations
     translationfiles.files += $$PWD/*.qm
     }
 

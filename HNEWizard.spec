@@ -44,6 +44,8 @@ A wizard to configure and install HikNetExtractor https://github.com/surfzoid/Hi
  
 %install
 %make_install INSTALL_ROOT=%{buildroot}
+ 
+%find_lang %{name} --with-qt --all-name
 
 mkdir -p %{buildroot}%{_datadir}/HikNetExtractor/template/
 
