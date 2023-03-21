@@ -28,7 +28,7 @@ jobs:
         run: make check
 
       - name: make install
-        run: make install
+        run: sudo make install
       
       - name: Version
         run: echo "::set-output name=version::$(head -n 1 ./HNEWizard.pro| cut -d ' ' -f 3)"
