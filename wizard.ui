@@ -72,9 +72,9 @@
    <widget class="QPushButton" name="BtnAdd">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>20</x>
       <y>510</y>
-      <width>121</width>
+      <width>141</width>
       <height>27</height>
      </rect>
     </property>
@@ -110,9 +110,9 @@
    <widget class="QPushButton" name="BtnLoad">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>270</x>
       <y>509</y>
-      <width>81</width>
+      <width>91</width>
       <height>31</height>
      </rect>
     </property>
@@ -368,7 +368,7 @@
      <rect>
       <x>590</x>
       <y>150</y>
-      <width>315</width>
+      <width>421</width>
       <height>156</height>
      </rect>
     </property>
