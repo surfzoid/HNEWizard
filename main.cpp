@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     a.installTranslator(&qtTranslator);
 
     QTranslator myappTranslator;
-    bsuc = myappTranslator.load(QLocale(), QLatin1String("HikNetExtractor"), QLatin1String("_"),
+    bsuc = myappTranslator.load(QLocale(), QLatin1String("HNEWizard"), QLatin1String("_"),
                                 "/usr/share/HikNetExtractor/translations");
 
     //surpress warning!
