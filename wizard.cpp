@@ -88,7 +88,10 @@ void Wizard::on_BtnAdd_released()
         QString line = in.readLine();
 
         if (line.startsWith("#"))
-            goto append;
+        {
+            newFileData.append(line + '\n');
+            continue;
+        }
 
         if (line.startsWith("url"))
             line = "url = '" + ui->IpEd->text() + ":" + ui->PortHttpEd->text() + "'";
@@ -120,7 +123,7 @@ void Wizard::on_BtnAdd_released()
                 line = "UtcTOfset = 'no'";
             }
         }
-append:
+
         newFileData.append(line + '\n');
     }
 
