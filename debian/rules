@@ -1,6 +1,5 @@
 #!/usr/bin/make -f
 export QT_SELECT := qt5
-TR_DIR=usr/share/HikNetExtractor/translations/
 # See debhelper(7) (uncomment to enable)
 # output every command that modifies files on the build system.
 #export DH_VERBOSE = 1
@@ -19,16 +18,6 @@ TR_DIR=usr/share/HikNetExtractor/translations/
 %:
 	dh $@
 
-install: build
-	mkdir -p usr/share/applications/
-
-	#Desktop file
-	cat >usr/share/applications/HikNetExtractor.desktop << 'EOF' \n [Desktop Entry] \n Version=1.0 \n Name=HikNetExtractor \n GenericName=hiknetextractor for Hikvision \n Comment=hiknetextractor for Hikvision \n Exec=HikNetExtractor %U \n TryExec=/usr/bin/HikNetExtractor \n Icon=QtVsPlayer \n Terminal=true \n Type=Application \n Categories=AudioVideo;Player; \n Keywords=Player;Video;HikVision;Motion; \n X-Desktop-File-Install-Version=0.26 \n Path=/usr/bin \n Comment[fr_FR]=Assistant de configuration pour HikNetExtractor \n Name[fr_FR]=HikNetExtractor wizaed \n GenericName[fr_FR]=HikNetExtractor wizard \n EOF
-
-	mkdir -p $(TR_DIR)
-	cp QtVsPlayer_fr_FR.qm $(TR_DIR)
-	$(MAKE) INSTALL_ROOT=usr/share install
-	dh_installdirs
 # dh_make generated override targets
 # This is example for Cmake (See https://bugs.debian.org/641051 )
 #override_dh_auto_configure:

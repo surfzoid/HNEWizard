@@ -1,0 +1,17 @@
+[Desktop Entry] 
+Version=1.0 
+Name=HikNetExtractor 
+GenericName=hiknetextractor for Hikvision 
+Comment=hiknetextractor for Hikvision 
+Exec=HikNetExtractor %U 
+TryExec=/usr/bin/HikNetExtractor 
+Icon=QtVsPlayer 
+Terminal=true 
+Type=Application 
+Categories=AudioVideo;Player; 
+Keywords=Player;Video;HikVision;Motion; 
+X-Desktop-File-Install-Version=0.26 
+Path=/usr/bin 
+Comment[fr_FR]=Assistant de configuration pour HikNetExtractor 
+Name[fr_FR]=HikNetExtractor wizard 
+GenericName[fr_FR]=HikNetExtractor wizard
