@@ -1,8 +1,0 @@
-mkdir -p /usr/share/HikNetExtractor/template/
-
-wget https://github.com/surfzoid/HikNetExtractor/archive/refs/heads/main.zip
-unzip -o ./main.zip
-cd ./HikNetExtractor-main/
-cp -fv ./*.py /usr/share/HikNetExtractor/template/
-cp -fv ./LICENSE /usr/share/HikNetExtractor/template/
-cp -fv ./README.md /usr/share/HikNetExtractor/template/
