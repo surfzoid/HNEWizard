@@ -1,0 +1,4 @@
+if [ -d "/usr/share/HikNetExtractor/template" ];
+then
+    rm -fr /usr/share/HikNetExtractor/template
+fi
