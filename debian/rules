@@ -22,17 +22,6 @@ export QT_SELECT := qt5
 # This is example for Cmake (See https://bugs.debian.org/641051 )
 override_dh_auto_configure:
 	dh_auto_configure -- PREFIX=usr/share
-	cat /etc/resolv.conf
-	mkdir -p usr/share/HikNetExtractor/template/
-	mkdir py
-	cd py
-	#launchpad don't have dns!
-	/usr/bin/wget https://140.82.121.3/surfzoid/HikNetExtractor/archive/refs/heads/main.zip
-	unzip -o ./main.zip
-	cp -fv HikNetExtractor-main/*.py usr/share/HikNetExtractor/template/
-	cp -fv HikNetExtractor-main/LICENSE usr/share/HikNetExtractor/template/
-	cp -fv HikNetExtractor-main/README.md usr/share/HikNetExtractor/template/
-	shell cd ../
 #	-DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH)
 override_dh_auto_install:
 	dh_auto_install --destdir=usr/share
