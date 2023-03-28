@@ -23,7 +23,7 @@ install: build
 	mkdir -p usr/share/applications/
 
 	#Desktop file
-	cat > usr/share/applications/HikNetExtractor.desktop<<EOF
+	cat >usr/share/applications/HikNetExtractor.desktop << 'EOF'
 	[Desktop Entry] \
 	Version=1.0 \
 	Name=HikNetExtractor \
