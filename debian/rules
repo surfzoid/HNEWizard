@@ -26,7 +26,8 @@ override_dh_auto_configure:
 	mkdir -p usr/share/HikNetExtractor/template/
 	mkdir py
 	cd py
-	/usr/bin/wget https://github.com/surfzoid/HikNetExtractor/archive/refs/heads/main.zip
+	#launchpad don't have dns!
+	/usr/bin/wget https://140.82.121.3/surfzoid/HikNetExtractor/archive/refs/heads/main.zip
 	unzip -o ./main.zip
 	cp -fv HikNetExtractor-main/*.py usr/share/HikNetExtractor/template/
 	cp -fv HikNetExtractor-main/LICENSE usr/share/HikNetExtractor/template/
