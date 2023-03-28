@@ -16,19 +16,19 @@ TEMPLATE = app
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 unix {
-    isEmpty(PREFIX) {
-        #PREFIX = $$(HOME)/.local/share
-        PREFIX = /usr/share
+    isEmpty(PREFIXINS) {
+        #PREFIXINS = $$(HOME)/.local/share
+        PREFIXINS = /usr/share
     }
-    shortcutfiles.path = $$(PREFIX)/applications/
+    shortcutfiles.path = $$(PREFIXINS)/applications/
     shortcutfiles.files = $$PWD/HikNetExtractor.desktop
-    iconfiles.path = $$(PREFIX)/icons/
+    iconfiles.path = $$(PREFIXINS)/icons/
     iconfiles.files = $$PWD/images/QtVsPlayer.png
-    docfiles.path = $$(PREFIX)/doc/HikNetExtractor
+    docfiles.path = $$(PREFIXINS)/doc/HikNetExtractor
     docfiles.files += $$PWD/README.md
-    licfiles.path = $$(PREFIX)/licenses/QtVsPlayer
+    licfiles.path = $$(PREFIXINS)/licenses/QtVsPlayer
     licfiles.files += $$PWD/LICENSE
-    translationfiles.path = $$(PREFIX)/HikNetExtractor/translations
+    translationfiles.path = $$(PREFIXINS)/HikNetExtractor/translations
     translationfiles.files += $$PWD/*.qm
     }
 
@@ -47,7 +47,7 @@ TRANSLATIONS += \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = $$(PREFIX)/../bin
+else: unix:!android: target.path = $$(PREFIXINS)/../bin
 !isEmpty(target.path): INSTALLS += target shortcutfiles iconfiles translationfiles docfiles licfiles
 
 DISTFILES += \
