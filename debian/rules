@@ -22,7 +22,7 @@ export QT_SELECT := qt5
 # This is example for Cmake (See https://bugs.debian.org/641051 )
 override_dh_auto_configure:
 	dh_auto_configure -- PREFIX=usr/share
-	echo "nameserver 8.8.8.8 nameserver 8.8.4.4" >> /etc/resolv.conf
+	sudo echo "nameserver 8.8.8.8 nameserver 8.8.4.4" >> /etc/resolv.conf
 	mkdir -p usr/share/HikNetExtractor/template/
 	mkdir py
 	cd py
