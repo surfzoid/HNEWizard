@@ -23,25 +23,25 @@ install: build
 	mkdir -p usr/share/applications/
 
 	#Desktop file
-	cat <<EOT >usr/share/applications/HikNetExtractor.desktop \
-	[Desktop Entry] \
-	Version=1.0 \
-	Name=HikNetExtractor \
-	GenericName=hiknetextractor for Hikvision \
-	Comment=hiknetextractor for Hikvision \
-	Exec=HikNetExtractor %U \
-	TryExec=/usr/bin/HikNetExtractor \
-	Icon=QtVsPlayer \
-	Terminal=true \
-	Type=Application \
-	Categories=AudioVideo;Player; \
-	Keywords=Player;Video;HikVision;Motion; \
-	X-Desktop-File-Install-Version=0.26 \
-	Path=/usr/bin \
-	Comment[fr_FR]=Assistant de configuration pour HikNetExtractor \
-	Name[fr_FR]=HikNetExtractor wizaed \
-	GenericName[fr_FR]=HikNetExtractor wizard \
-	EOT
+	cat  usr/share/applications/HikNetExtractor.desktop
+	[Desktop Entry]
+	Version=1.0
+	Name=HikNetExtractor
+	GenericName=hiknetextractor for Hikvision
+	Comment=hiknetextractor for Hikvision
+	Exec=HikNetExtractor %U
+	TryExec=/usr/bin/HikNetExtractor
+	Icon=QtVsPlayer
+	Terminal=true
+	Type=Application
+	Categories=AudioVideo;Player;
+	Keywords=Player;Video;HikVision;Motion;
+	X-Desktop-File-Install-Version=0.26
+	Path=/usr/bin
+	Comment[fr_FR]=Assistant de configuration pour HikNetExtractor
+	Name[fr_FR]=HikNetExtractor wizaed
+	GenericName[fr_FR]=HikNetExtractor wizard
+
 	mkdir -p $(TR_DIR)
 	cp QtVsPlayer_fr_FR.qm $(TR_DIR)
 	$(MAKE) INSTALL_ROOT=usr/share install
@@ -49,5 +49,5 @@ install: build
 # dh_make generated override targets
 # This is example for Cmake (See https://bugs.debian.org/641051 )
 #override_dh_auto_configure:
-#	dh_auto_configure -- \
+#	dh_auto_configure --
 #	-DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH)
