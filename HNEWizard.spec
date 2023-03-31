@@ -1,6 +1,6 @@
 Name:           HikNetExtractor
 Summary:        HikNetExtractor for Hikvision
-Version:        1.0.5
+Version:        1.0.6
 
 %if 0%{?mageia}
 Release:        %mkrel 1
