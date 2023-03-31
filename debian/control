@@ -7,7 +7,7 @@ Build-Depends: dh-make,
                qtbase5-dev (>= 5.6),
                qttools5-dev-tools,
                qt5-qmake
-Standards-Version: 1.0.6
+Standards-Version: 1.0.6-2
 Homepage: https://github.com/surfzoid/HNEWizard
 #Vcs-Browser: https://salsa.debian.org/debian/HNEWizard
 #Vcs-Git: https://salsa.debian.org/debian/HNEWizard.git
@@ -19,7 +19,7 @@ Depends: ${shlibs:Depends},
                ${misc:Depends},
                libqt5gui5,
                libqt5widgets5,
-               libqt5core5,
+               libqt5core5a,
                python-hiknetextractor
 Description:hiknetextractor for Hikvision.
  A wizard to configure HikNetExtractor https://github.com/surfzoid/HikNetExtractor
