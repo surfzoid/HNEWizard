@@ -3,9 +3,9 @@ Summary:        HikNetExtractor for Hikvision
 Version:        1.0.7
 
 %if 0%{?mageia}
-Release:        %mkrel 1
+Release:        %mkrel 2
 %else
-Release:        1
+Release:        2
 %endif
 
 License:        GPLv3
@@ -65,11 +65,12 @@ chmod -R ug+rw %{_rpmdir}
 chmod -R ug+rw %{_srcrpmdir}
  
 %files
+%if 0%{?mageia}
 %license LICENSE
-%if 0%{?suse_version}
-%{_datadir}/doc/README.md
-%else
 %doc README.md
+%else
+%{_datadir}/doc/HikNetExtractor/README.md
+%{_datadir}/licenses/HikNetExtractor/LICENSE
 %endif
 %{_bindir}/HikNetExtractor
 %{_datadir}/applications/%{name}.desktop
