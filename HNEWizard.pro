@@ -53,5 +53,5 @@ else: unix:!android: target.path = $$(PREFIXINS)/../bin
 DISTFILES += \
     README.md \
     HikNetExtractor.desktop \
-    images/QtVsPlayer.icns \
-    images/QtVsPlayer.png
+    images/hiknetextractor.icns \
+    images/hiknetextractor.png
