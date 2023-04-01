@@ -57,31 +57,7 @@ cp -fv ./*.py %{buildroot}%{_datadir}/HikNetExtractor/template/
 cp -fv ./LICENSE %{buildroot}%{_datadir}/HikNetExtractor/template/
 cp -fv ./README.md %{buildroot}%{_datadir}/HikNetExtractor/template/
 
-mkdir -p %{buildroot}%{_datadir}/applications/
-
-#Desktop file
-cat <<EOT >%{buildroot}%{_datadir}/applications/%{name}.desktop
-[Desktop Entry]
-Version=1.0
-Name=HikNetExtractor
-GenericName=%{summary}
-Comment=%{summary}
-Exec=HikNetExtractor %U
-TryExec=%{_bindir}/HikNetExtractor
-Icon=QtVsPlayer
-Terminal=true
-Type=Application
-Categories=AudioVideo;Player;
-Keywords=Player;Video;HikVision;Motion;
-X-Desktop-File-Install-Version=0.26
-Path=/usr/bin
-Comment[fr_FR]=Assistant de configuration pour HikNetExtractor
-Name[fr_FR]=HikNetExtractor wizaed
-GenericName[fr_FR]=HikNetExtractor wizard
-EOT
-
 %post
-
 
 %clean
 rm -rf %buildroot
