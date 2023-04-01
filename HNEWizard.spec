@@ -91,13 +91,14 @@ chmod -R ug+rw %{_srcrpmdir}
 %files
 %license LICENSE
 %if 0%{?suse_version}
-#%{_datadir}/doc/README.md
+%{_datadir}/doc/README.md
 %else
 %doc README.md
 %endif
 %{_bindir}/HikNetExtractor
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/HikNetExtractor/
+%{_datadir}/icons/hiknetextractor.png
 
 %changelog
 * Mon Feb 06 2023 surfzoid@gmail.com

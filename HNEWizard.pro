@@ -23,10 +23,10 @@ unix {
     shortcutfiles.path = $$(PREFIXINS)/applications/
     shortcutfiles.files = $$PWD/HikNetExtractor.desktop
     iconfiles.path = $$(PREFIXINS)/icons/
-    iconfiles.files = $$PWD/images/QtVsPlayer.png
+    iconfiles.files = $$PWD/images/hiknetextractor.png
     docfiles.path = $$(PREFIXINS)/doc/HikNetExtractor
     docfiles.files += $$PWD/README.md
-    licfiles.path = $$(PREFIXINS)/licenses/QtVsPlayer
+    licfiles.path = $$(PREFIXINS)/licenses/HikNetExtractor
     licfiles.files += $$PWD/LICENSE
     translationfiles.path = $$(PREFIXINS)/HikNetExtractor/translations
     translationfiles.files += $$PWD/*.qm
