@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>images/QtVsPlayer.png</normaloff>images/QtVsPlayer.png</iconset>
+    <normaloff>images/hiknetextractor.png</normaloff>images/hiknetextractor.png</iconset>
   </property>
   <property name="locale">
    <locale language="English" country="UnitedKingdom"/>
