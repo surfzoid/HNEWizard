@@ -112,7 +112,7 @@ jobs:
             dir debug
             dir release
             mkdir application
-            cp HNEWizard.exe application/
+            cp release/HikNetExtractor.exe application/
             cp README.md application/
             cp HNEWizard_fr_FR.qm application/
             cp LICENSE application/LICENSE.txt
