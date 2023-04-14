@@ -112,15 +112,10 @@ jobs:
             dir debug
             dir release
             mkdir application
-            cp release/HNEWizard.exe application/
-            cp lib/w86_64/* application/
-            cp install-win.md application/README.TXT
+            cp HNEWizard.exe application/
             cp README.md application/
             cp HNEWizard_fr_FR.qm application/
             cp LICENSE application/LICENSE.txt
-            cp LICENSE application/LICENSE.txt
-            cp Licenses_playctrl_linux.txt application/
-            rm application/PlayCtrl.lib
             qtenv2.bat
             windeployqt application/HNEWizard.exe --debug --compiler-runtime --libdir application/
             cp qt/Qt/5.15.2/mingw81_64/bin/libgcc_s_seh-1.dll application/
