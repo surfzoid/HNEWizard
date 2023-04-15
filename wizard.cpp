@@ -272,6 +272,9 @@ void Wizard::on_PathED_textEdited(const QString &arg1)
 
 void Wizard::on_BtnCronCreate_released()
 {
+#if (defined(_WIN32))
+    process->start("taskschd.msc");
+#elif ((defined(__linux__) | defined(__APPLE__)) &  !defined(__ANDROID__))
     QString SystemdServiceTemplatecache = SystemdServiceTemplate;
     QString SystemdTimerTemplatecache = SystemdTimerTemplate;
 
@@ -306,11 +309,15 @@ void Wizard::on_BtnCronCreate_released()
     }
 
     process->start("systemctl", QStringList() << "--user" << "enable" << ui->CamNameED->text().toUtf8() + ".service" << "--now");
+#endif
 
 }
 
 void Wizard::on_BtnDelTimer_released()
 {
+#if (defined(_WIN32))
+    process->start("taskschd.msc");
+#elif ((defined(__linux__) | defined(__APPLE__)) &  !defined(__ANDROID__))
     int ret = QMessageBox::warning(this,tr("Are you sure? "),"Permanently delete timer for this device",QMessageBox::Ok | QMessageBox::Cancel);
     if (ret == QMessageBox::Cancel)
         return;
@@ -319,6 +326,7 @@ void Wizard::on_BtnDelTimer_released()
     QFile::remove(SystemdPath + "multi-user.target.wants/" + ui->CamNameED->text() + ".service");
     QFile::remove(SystemdPath + "multi-user.target.wants/" + ui->CamNameED->text() + ".timer");
     ui->TxtDebug->append("Timer deleted");
+#endif
 }
 
 void Wizard::on_BtnDuplicate_released()

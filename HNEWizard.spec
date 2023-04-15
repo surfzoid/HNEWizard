@@ -1,6 +1,6 @@
 Name:           HikNetExtractor
 Summary:        HikNetExtractor for Hikvision
-Version:        1.0.7
+Version:        1.0.8
 
 %if 0%{?mageia}
 Release:        %mkrel 2
@@ -78,5 +78,9 @@ chmod -R ug+rw %{_srcrpmdir}
 %{_datadir}/icons/hiknetextractor.png
 
 %changelog
+* Sat Apr 15 2023 surfzoid@gmail.com
++ Windoze schedle task.
++ Cosmetics.
+
 * Mon Feb 06 2023 surfzoid@gmail.com
 + First release.
