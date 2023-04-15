@@ -3,9 +3,9 @@ Summary:        HikNetExtractor for Hikvision
 Version:        1.0.8
 
 %if 0%{?mageia}
-Release:        %mkrel 2
+Release:        %mkrel 3
 %else
-Release:        2
+Release:        3
 %endif
 
 License:        GPLv3

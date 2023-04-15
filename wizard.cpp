@@ -273,7 +273,7 @@ void Wizard::on_PathED_textEdited(const QString &arg1)
 void Wizard::on_BtnCronCreate_released()
 {
 #if (defined(_WIN32))
-    process->start("taskschd.msc");
+    process->start("control", QStringList() << "schedtasks");
 #elif ((defined(__linux__) | defined(__APPLE__)) &  !defined(__ANDROID__))
     QString SystemdServiceTemplatecache = SystemdServiceTemplate;
     QString SystemdTimerTemplatecache = SystemdTimerTemplate;
@@ -316,7 +316,7 @@ void Wizard::on_BtnCronCreate_released()
 void Wizard::on_BtnDelTimer_released()
 {
 #if (defined(_WIN32))
-    process->start("taskschd.msc");
+    process->start("control", QStringList() << "schedtasks");
 #elif ((defined(__linux__) | defined(__APPLE__)) &  !defined(__ANDROID__))
     int ret = QMessageBox::warning(this,tr("Are you sure? "),"Permanently delete timer for this device",QMessageBox::Ok | QMessageBox::Cancel);
     if (ret == QMessageBox::Cancel)
