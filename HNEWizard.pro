@@ -1,4 +1,4 @@
-VERSION = 1.0.8
+VERSION = 1.0.9
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 QT       += core gui
 
@@ -53,5 +53,6 @@ else: unix:!android: target.path = $$(PREFIXINS)/../bin
 DISTFILES += \
     README.md \
     HikNetExtractor.desktop \
+    TODO \
     images/hiknetextractor.icns \
     images/hiknetextractor.png

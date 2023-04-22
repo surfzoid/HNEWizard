@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QInputDialog>
+#include <QDesktopServices>
 
 Wizard::Wizard(QWidget *parent)
     : QMainWindow(parent)
@@ -24,6 +25,10 @@ Wizard::Wizard(QWidget *parent)
     connect(process, &QProcess::stateChanged, this, &Wizard::addlabelstatus);
     connect(process, &QProcess::readyReadStandardError, this, &Wizard::processreadyReadStandardError);
     connect(process, &QProcess::readyReadStandardOutput, this, &Wizard::processreadyReadStandardOutput);
+    connect(process, &QProcess::errorOccurred, this, &Wizard::QPerrorOccurred);
+
+    //check py version and addapt py-hiknetextractor to OS
+    Requiere();
 
 }
 
@@ -145,11 +150,28 @@ QString Wizard::GetSrce()
 {
     QStringList SrcDir =  QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
 
+    QString HikLocation = "";
     foreach (QString Srce, SrcDir) {
+        HikLocation.append(Srce + "/HikNetExtractor\n\n");
         if (QDir(Srce + "/HikNetExtractor").exists())
             return Srce;
     }
 
+    QMessageBox msgBox(this);
+    msgBox.setWindowTitle("Missing depandancys");
+    msgBox.addButton(QMessageBox::Open);
+    msgBox.addButton(QMessageBox::Cancel);
+    msgBox.addButton("RPM", QMessageBox::AcceptRole);
+    msgBox.addButton("Deb", QMessageBox::ApplyRole);
+    msgBox.setText("hiknetextractor-python not found in\n" + HikLocation + "\nIf you are under Linux you can use Deb or RPM button and follow instruction to add repository and install hiknetextractor-python in the good directory, if you are not Linuxien, you need to use the open button to download and extract manualy hiknetextractor-python in the good directory.");
+    int Answer = msgBox.exec();
+    if (Answer == QMessageBox::Open)
+     QDesktopServices::openUrl(QUrl("https://github.com/surfzoid/HikNetExtractor/archive/refs/heads/main.zip", QUrl::TolerantMode));
+    if (Answer == 0)
+     QDesktopServices::openUrl(QUrl("https://copr.fedorainfracloud.org/coprs/surfzoid/HikNetExtractor/", QUrl::TolerantMode));
+    if (Answer == 1)
+     QDesktopServices::openUrl(QUrl("https://launchpad.net/~surfzoid/+archive/ubuntu/hikvision", QUrl::TolerantMode));
+    exit(1);
     return "/usr/share";
 }
 
@@ -353,9 +375,9 @@ void Wizard::addlabelstatus(QProcess::ProcessState newState)
 {
     /*switch(newState) {
         <...>
-    };*/
+    };
     if (newState == 0)
-    ui->TxtDebug->append(QString::number(newState));
+    ui->TxtDebug->append(QString::number(newState));*/
 }
 
 
@@ -367,4 +389,42 @@ void Wizard::processreadyReadStandardError()
 void Wizard::processreadyReadStandardOutput()
 {
     ui->TxtDebug->append(process->readAllStandardOutput());
+}
+
+
+void Wizard::Requiere()
+{
+    ProcCase=0;
+    process->start("python", QStringList() << "--version");
+
+}
+
+
+void Wizard::QPerrorOccurred(QProcess::ProcessError error)
+{
+    //0=py vers;1=hiknetextractor-python;
+    switch(ProcCase) {
+    case 0:
+        if (error==0)
+        {
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("Python Helper");
+#if (defined(_WIN32))
+        msgBox.addButton(QMessageBox::Open);
+        msgBox.addButton(QMessageBox::Cancel);
+        msgBox.setText("Python not found. Do you want to open the download page and install it?");
+        if (msgBox.exec() == QMessageBox::Open)
+         QDesktopServices::openUrl(QUrl("https://www.python.org/downloads/windows/", QUrl::TolerantMode));
+#elif ((defined(__linux__) | defined(__APPLE__)) &  !defined(__ANDROID__))
+        msgBox.setText("Python not found. Install it with your package manager");
+        msgBox.exec();
+
+#endif
+        }
+
+    case 1:
+
+    default: ;
+        ProcCase=-1;
+    };
 }

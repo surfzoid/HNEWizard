@@ -42,6 +42,7 @@ public slots:
     void addlabelstatus(QProcess::ProcessState newState);
     void processreadyReadStandardError();
     void processreadyReadStandardOutput();
+    void QPerrorOccurred(QProcess::ProcessError error);
 
 private:
     Ui::Wizard *ui;
@@ -79,6 +80,8 @@ private:
 
     QProcess *process;
     bool processIsFinished = false;
+    void Requiere();
+    int ProcCase = -1;
 
 };
 #endif // WIZARD_H

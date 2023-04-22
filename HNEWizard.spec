@@ -1,11 +1,11 @@
 Name:           HikNetExtractor
 Summary:        HikNetExtractor for Hikvision
-Version:        1.0.8
+Version:        1.0.9
 
 %if 0%{?mageia}
-Release:        %mkrel 3
+Release:        %mkrel 1
 %else
-Release:        3
+Release:        1
 %endif
 
 License:        GPLv3
@@ -78,6 +78,11 @@ chmod -R ug+rw %{_srcrpmdir}
 %{_datadir}/icons/hiknetextractor.png
 
 %changelog
+* Sat Apr 22 2023 surfzoid@gmail.com
++ when start, test and display phyton version.
++ check if hiknetextractor-python is Here.
++ sugest deb, rpm repo or for windoze download.
+
 * Sat Apr 15 2023 surfzoid@gmail.com
 + Windoze schedle task.
 + Cosmetics.
