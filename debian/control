@@ -7,7 +7,7 @@ Build-Depends: dh-make,
                qtbase5-dev (>= 5.15),
                qttools5-dev-tools,
                qt5-qmake
-Standards-Version: 1.0.9
+Standards-Version: 1.0.10
 Homepage: https://github.com/surfzoid/HNEWizard
 #Vcs-Browser: https://salsa.debian.org/debian/HNEWizard
 #Vcs-Git: https://salsa.debian.org/debian/HNEWizard.git
