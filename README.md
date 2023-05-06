@@ -1,7 +1,7 @@
 # HNEWizard
-RPMS:  
-[![Copr build status](https://copr.fedorainfracloud.org/coprs/surfzoid/HikNetExtractor/package/HikNetExtractor/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/surfzoid/HikNetExtractor/package/HikNetExtractor/) 
-DEBS:  
+##RPMS:  
+[![Copr build status](https://copr.fedorainfracloud.org/coprs/surfzoid/HikNetExtractor/package/HikNetExtractor/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/surfzoid/HikNetExtractor/package/HikNetExtractor/)  
+##DEBS:  
 [![Launchpad logo](http://media.launchpad.net/lp-badge-kit/launchpad-badge-w160px.png)](https://launchpad.net/~surfzoid)  
 WIN:  
 Manualy download and install from [Release page](https://github.com/surfzoid/HNEWizard/releases/latest)  
