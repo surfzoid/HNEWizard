@@ -3,9 +3,9 @@ Summary:        HikNetExtractor for Hikvision
 Version:        1.0.10
 
 %if 0%{?mageia}
-Release:        %mkrel 1
+Release:        %mkrel 2
 %else
-Release:        1.surf.mlo
+Release:        2.surf.mlo
 %endif
 
 License:        GPLv3
@@ -30,6 +30,20 @@ Requires: qtbase5-common
  
 %description
 A wizard to configure and install HikNetExtractor https://github.com/surfzoid/HikNetExtractor
+
+
+%package	python
+Summary:	Extract periodically record event from Hikvion camera or NVR.
+Group:		Networking/Other
+Requires:	%{name} = %{version}
+Requires:	python3
+
+%description	python
+Provides functionality to extract periodically record event from 
+Hikvion camera or NVR with ISAPI and HTTPDigestAuth enable.
+Add this script to an schedule task and you will keep records 
+during the number of day you put in the config or 
+use the GUI wizard /usr/bin/HikNetExtractor.
  
 %prep
 %autosetup -n HNEWizard-%{version}
@@ -74,10 +88,17 @@ chmod -R ug+rw %{_srcrpmdir}
 %endif
 %{_bindir}/HikNetExtractor
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/HikNetExtractor/
 %{_datadir}/icons/hiknetextractor.png
+%{_datadir}/HikNetExtractor/translations/HNEWizard_fr_FR.qm
+
+
+%files python
+%{_datadir}/HikNetExtractor/template/
 
 %changelog
+* Sat May 6 2023 surfzoid@gmail.com
++ Split in bin and python-hiknetextractor rpms.
+
 * Sat Apr 22 2023 surfzoid@gmail.com
 + when start, test and display phyton version.
 + check if hiknetextractor-python is Here.
