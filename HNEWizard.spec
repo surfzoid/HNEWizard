@@ -3,9 +3,9 @@ Summary:        HikNetExtractor for Hikvision
 Version:        1.0.10
 
 %if 0%{?mageia}
-Release:        %mkrel 2
+Release:        %mkrel 3
 %else
-Release:        2.surf.mlo
+Release:        3.surf.mlo
 %endif
 
 License:        GPLv3
@@ -27,6 +27,7 @@ BuildRequires:  wget
 BuildRequires:  unzip
 
 Requires: qtbase5-common
+Requires:	%{name}-python = %{version}
  
 %description
 A wizard to configure and install HikNetExtractor https://github.com/surfzoid/HikNetExtractor
