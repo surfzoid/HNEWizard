@@ -21,7 +21,8 @@ Wizard::Wizard(QWidget *parent)
     }
 
     process = new QProcess(this);
-    //connect(process, &QProcess::finished, this, &Wizard::processFinished);
+    //connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),[=](int exitCode, QProcess::ExitStatus exitStatus){ Wizard::processFinished(exitCode,exitStatus); });
+
     connect(process, &QProcess::stateChanged, this, &Wizard::addlabelstatus);
     connect(process, &QProcess::readyReadStandardError, this, &Wizard::processreadyReadStandardError);
     connect(process, &QProcess::readyReadStandardOutput, this, &Wizard::processreadyReadStandardOutput);
@@ -421,10 +422,13 @@ void Wizard::QPerrorOccurred(QProcess::ProcessError error)
 
 #endif
         }
+        break;
 
     case 1:
+        break;
 
     default: ;
         ProcCase=-1;
+        break;
     };
 }
