@@ -6,7 +6,7 @@ Version:        1.0.11
 %if 0%{?mageia}
 Release:        %mkrel %{Rel}
 %elif 0%{?fedora} > 36 || 0%{?rhel} > 6
-Release:        %{Rel}%{?dist}
+Release:        %{Rel}.surf%{?dist}
 %else
 Release:        %{Rel}.surf.mlo
 %endif
