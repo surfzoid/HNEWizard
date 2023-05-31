@@ -5,7 +5,7 @@ Version:        1.0.11
 %global Rel 3
 %if 0%{?mageia}
 Release:        %mkrel %{Rel}
-%elifos 0%{?fedora} || 0%{?rhel}
+%elif 0%{?fedora} > 36 || 0%{?rhel} > 6
 Release:        %{?dist} %{Rel}
 %else
 Release:        %{Rel}.surf.mlo
