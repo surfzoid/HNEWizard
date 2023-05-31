@@ -2,10 +2,13 @@ Name:           HikNetExtractor
 Summary:        HikNetExtractor for Hikvision
 Version:        1.0.11
 
+%global Rel 3
 %if 0%{?mageia}
-Release:        %mkrel 3
+Release:        %mkrel %{Rel}
+%if 0%{?fedora} || 0%{?rhel}
+Release:        %{?dist} %{Rel}
 %else
-Release:        3.surf.mlo
+Release:        %{Rel}.surf.mlo
 %endif
 
 License:        GPLv3
